@@ -195,7 +195,8 @@ async def main():
         for e in args.exclude:
             if e.upper() in Platforms.__members__:
                 platform_found = Platforms[e.upper()]
-                platforms.remove(platform_found);
+                if platform_found in platforms:
+                    platforms.remove(platform_found);
             else:
                 raise ValueError(e + " is not a valid platform")
 
